@@ -1,0 +1,35 @@
+/* :root {
+  --columns: 1;
+}
+
+.ListOfGifs {
+  column-count: var(--columns);
+  column-gap: 1rem;
+  ⬇ para que la seccion de trending no se llegue a ver si no cargan los gifs (por el lazy load) y que no haga la petición antes de que carguen los gifs
+  min-height: 100vh;
+}
+
+@media (min-width: 400px) {
+  :root {
+    --columns: 2;
+  }
+}
+
+@media (min-width: 600px) {
+  :root {
+    --columns: 3;
+  }
+}
+
+@media (min-width: 800px) {
+  :root {
+    --columns: 4;
+  }
+} */
+
+.ListOfGifs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-rows: masonry;
+    gap: 1rem;
+}
