@@ -21,7 +21,7 @@ export default function SearchResults ({ params: { keyword } }) {
   [setPage])
 
   const title = gifs.length
-    ? `${gifs.length} results of ${decodeKeyword}`
+    ? `${gifs.length} results of ${decodeKeyword} | Giffy`
     : ''
 
   useEffect(() => {
