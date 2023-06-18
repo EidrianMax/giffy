@@ -1,5 +1,9 @@
-import './styles.css'
+import { SpinnerWrapper, StyledSpinner } from './styles'
 
 export default function Spinner () {
-  return <h1 className="Spinner">Loading..</h1>
+  return (
+    <SpinnerWrapper>
+      <StyledSpinner />
+    </SpinnerWrapper>
+  )
 }

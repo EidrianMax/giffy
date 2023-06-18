@@ -1,0 +1,2 @@
+- [ ] Agregar busqueda por lenguajes como español, chino, aleman, etc
+- [ ] Hacer un metodo que resetee los filtros en la busqueda de gifs

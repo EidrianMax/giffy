@@ -1,14 +1,17 @@
 /* eslint-disable react-refresh/only-export-components */
 import React from 'react'
+import { StyledGif } from './style'
 import { Link } from 'wouter'
+import Fav from '../Fav'
 
 function Gif ({ id, title, url }) {
   return (
-    <div key={id}>
-      <img src={url} alt={title} />
-      <Link href={`/gif/${id}`}><h4>{title}</h4></Link>
-      <small>{id}</small>
-    </div>
+    <StyledGif className='Gif' key={id}>
+      <Fav gifId={id} />
+      <Link href={`/gif/${id}`}>
+        <img src={url} alt={title} />
+      </Link>
+    </StyledGif>
   )
 }
 

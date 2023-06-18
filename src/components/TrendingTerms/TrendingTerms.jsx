@@ -1,7 +1,6 @@
-import './styles.css'
 import { useEffect, useState } from 'react'
-import { Link } from 'wouter'
 import getTrendingSearchTerms from '@/services/getTrendingSearchTerms'
+import { TrendingTitle, TrendingList, TrendingItem, TrendingLink } from './styles'
 
 export default function TrendingTerms () {
   const [trends, setTrends] = useState([])
@@ -12,16 +11,16 @@ export default function TrendingTerms () {
   }, [])
 
   return (
-    <div>
-      <h2>Trending</h2>
+    <section>
+      <TrendingTitle>Trending</TrendingTitle>
 
-      <ul className='trending-list'>
-        {trends.map(category => (
-          <li className='trending-item' key={category}>
-            <Link href={`search/${category}`}>{category}</Link>
-          </li>
+      <TrendingList>
+        {trends.map((category, index) => (
+          <TrendingItem key={category} index={index}>
+            <TrendingLink href={`search/${category}`}>{category}</TrendingLink>
+          </TrendingItem>
         ))}
-      </ul>
-    </div>
+      </TrendingList>
+    </section>
   )
 }

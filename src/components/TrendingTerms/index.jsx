@@ -9,16 +9,18 @@ const TrendingTerms = React.lazy(
   () => import('./TrendingTerms')
 )
 
-export default function LazyTrending () {
-  const { isNearScreen, ref } = useNearScreen()
+export default function LazyTrendingTerms () {
+  const { isNearScreen, fromRef } = useNearScreen()
 
-  return <div ref={ref}>
-    {/*
+  return (
+    <div ref={fromRef}>
+      {/*
       React.lazy devuelve una promesa y donde queremos renderizar nuestro componente 'lazy' tenenmos que envolverlo con <Suspense>
       Con el fallback podemos lograr cosas estilo skeleton o parecido
     */}
-    <Suspense fallback={<Spinner />}>
-      {isNearScreen ? <TrendingTerms /> : <Spinner />}
-    </Suspense>
-  </div>
+      <Suspense fallback={<Spinner />}>
+        {isNearScreen ? <TrendingTerms /> : <Spinner />}
+      </Suspense>
+    </div>
+  )
 }
