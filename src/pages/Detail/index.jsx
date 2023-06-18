@@ -1,10 +1,11 @@
 // import { useContext } from 'react'
 // import StaticContext from '@/context/StaticContext'
-import Gif from '@/components/Gif'
+import Fav from '@/components/Fav'
 import Spinner from '@/components/Spinner'
 import useSingleGif from '@/hooks/useSingleGif'
 import { Helmet } from 'react-helmet'
 import { Redirect } from 'wouter'
+import { GifDetail } from './styles'
 
 export default function Detail ({ params: { id } }) {
   // const { name } = useContext(StaticContext)
@@ -17,10 +18,12 @@ export default function Detail ({ params: { id } }) {
 
   if (isLoading) {
     return (
-    <Helmet>
-      <title>Loading..</title>
-      <Spinner />
-    </Helmet>
+      <>
+        <Helmet>
+          <title>Loading..</title>
+        </Helmet>
+        <Spinner />
+      </>
     )
   }
   if (isError) return <Redirect to='/404' />
@@ -31,7 +34,11 @@ export default function Detail ({ params: { id } }) {
       <Helmet>
         <title>{`${gif.title} | Giffy` || 'Giffy'}</title>
       </Helmet>
-      <Gif {...gif} />
+      <GifDetail>
+        <img src={gif.url} alt={gif.title} />
+        <Fav gifId={gif.id} />
+        <h2>{gif.title}</h2>
+      </GifDetail>
     </>
   )
 }

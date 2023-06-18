@@ -1,35 +1,33 @@
-import './styles.css'
-import { useLocation } from 'wouter'
 import useGifs from '@/hooks/useGifs'
-import ListOfGifs from '@/components/ListOfGif'
+import Gifs from '@/components/Gifs'
 import Spinner from '@/components/Spinner'
-import LazyTrending from '@/components/TrendingTerms'
+import LazyTrendingTerms from '@/components/TrendingTerms'
 import SearchForm from '@/components/SearchForm'
-import { useCallback } from 'react'
 import { Helmet } from 'react-helmet'
+import { HomeGrid } from './styles'
 
 export default function Home () {
-  const [, setPath] = useLocation()
   const { loading, gifs } = useGifs()
 
-  const handleSubmit = useCallback(({ keyword }) => {
-    setPath(`/search/${keyword}`)
-  }, [setPath])
+  return (
+    <>
+      <Helmet>
+        <title>Home | Giffy</title>
+      </Helmet>
 
-  return <>
-    <Helmet>
-      <title>Home | Giffy</title>
-    </Helmet>
+      <SearchForm />
 
-    <SearchForm onSubmit={handleSubmit} />
+      <HomeGrid>
+        <div>
+          <h3 style={{ fontSize: '2rem', marginTop: '1rem' }}>Last searchers</h3>
 
-    <h2>Last searchers</h2>
-    {
-      loading
-        ? <Spinner />
-        : <ListOfGifs gifs={gifs} />
-    }
+          <Gifs gifs={gifs} />
+        </div>
 
-    <LazyTrending />
-  </>
+        {loading && <Spinner />}
+
+        <LazyTrendingTerms />
+      </HomeGrid>
+    </>
+  )
 }

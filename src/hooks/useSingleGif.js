@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import getSingleGif from '@/services/getSingleGif'
 import useGifs from './useGifs'
+import { getSingleGif } from '@/services'
 
 export default function useSingleGif ({ id } = {}) {
   const { gifs } = useGifs()
@@ -22,12 +22,13 @@ export default function useSingleGif ({ id } = {}) {
           setIsLoading(false)
           setIsError(false)
         })
-        .catch(() => {
-          setIsError(true)
+        .catch((error) => {
           setIsLoading(false)
+          setIsError(true)
+          console.log(error)
         })
     }
-  }, [gif, id, isLoading])
+  }, [gif, id])
 
   return { gif, isLoading, isError }
 }
