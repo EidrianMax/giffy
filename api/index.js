@@ -12,13 +12,13 @@ const app = express()
 app.use(express.json())
 app.use(cors())
 
-const PORT = 8001
+const PORT = process.env.PORT || 8001
 const JWT_SECRET = 'shhhh'
 const JWT_EXPIRES_IN = '1d'
 const BCRYPT_ROUND_SALTS = 10
 
 app.get('/', (req, res) => {
-  res.send('Hello World')
+  res.send('Hello')
 })
 
 app.post('/api/users', async (req, res) => {
