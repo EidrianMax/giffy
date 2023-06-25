@@ -3,10 +3,10 @@ const jwt = require('jsonwebtoken')
 const bcrypt = require('bcrypt')
 const fs = require('fs/promises')
 const cors = require('cors')
-const { getUsersFromJson, getToken } = require('./helpers')
-const path = require('path')
+const { getUsersFromJson, getToken } = require('./helpers.js')
+const path = require('node:path')
 
-const filePath = path(__dirname, 'users.json')
+const filePath = path.join(__dirname, 'users.json')
 
 const app = express()
 app.use(express.json())
