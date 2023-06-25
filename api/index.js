@@ -17,6 +17,10 @@ const JWT_SECRET = 'shhhh'
 const JWT_EXPIRES_IN = '1d'
 const BCRYPT_ROUND_SALTS = 10
 
+app.get('/', (req, res) => {
+  res.send('Hello World')
+})
+
 app.post('/api/users', async (req, res) => {
   try {
     const { username, password } = req.body
