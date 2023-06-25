@@ -4,6 +4,9 @@ const bcrypt = require('bcrypt')
 const fs = require('fs/promises')
 const cors = require('cors')
 const { getUsersFromJson, getToken } = require('./helpers')
+const path = require('path')
+
+const filePath = path(__dirname, 'users.json')
 
 const app = express()
 app.use(express.json())
@@ -40,7 +43,7 @@ app.post('/api/users', async (req, res) => {
 
     const newUsers = [...users, user]
 
-    await fs.writeFile('./users.json', JSON.stringify(newUsers))
+    await fs.writeFile(filePath, JSON.stringify(newUsers))
 
     res.status(200).json({
       id: user.id,
@@ -131,7 +134,7 @@ app.post('/api/users/favs/:favId', async (req, res) => {
       }
     })
 
-    await fs.writeFile('./users.json', JSON.stringify(newUsers))
+    await fs.writeFile(filePath, JSON.stringify(newUsers))
 
     res.status(200).json({
       favs: user.favs
@@ -175,7 +178,7 @@ app.delete('/api/users/favs/:favId', async (req, res) => {
       }
     })
 
-    await fs.writeFile('./users.json', JSON.stringify(newUsers))
+    await fs.writeFile(filePath, JSON.stringify(newUsers))
 
     res.status(200).json({
       favs: user.favs
