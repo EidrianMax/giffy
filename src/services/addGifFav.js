@@ -1,7 +1,7 @@
 import { API_URL_USERS } from './settings'
 
 export default function addGifFav ({ token, gifId }) {
-  return fetch(`${API_URL_USERS}/users/favs/${gifId}`, {
+  return fetch(`${API_URL_USERS}/favs/${gifId}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -13,9 +13,5 @@ export default function addGifFav ({ token, gifId }) {
 
       return res.json()
     })
-    .then(json => {
-      const { favs } = json
-
-      return favs
-    })
+    .then(favs => favs)
 }

@@ -1,7 +1,7 @@
-const API_URL = 'https://giffy-production.up.railway.app/api'
+import { API_URL_USERS } from './settings'
 
 export default function registerUser ({ username, password }) {
-  return fetch(`${API_URL}/users`, {
+  return fetch(`${API_URL_USERS}/register`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

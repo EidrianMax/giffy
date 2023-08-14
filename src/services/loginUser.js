@@ -1,7 +1,7 @@
 import { API_URL_USERS } from './settings'
 
 export default function loginUser ({ username, password }) {
-  return fetch(`${API_URL_USERS}/users/auth`, {
+  return fetch(`${API_URL_USERS}/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'

@@ -1,7 +1,7 @@
 import { API_URL_USERS } from './settings'
 
 export default function getAllFavs ({ token }) {
-  return fetch(`${API_URL_USERS}/users/favs`, {
+  return fetch(`${API_URL_USERS}/favs`, {
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`
@@ -12,9 +12,7 @@ export default function getAllFavs ({ token }) {
 
       return res.json()
     })
-    .then(json => {
-      const { favs } = json
-
+    .then(favs => {
       return favs
     })
 }
